@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #F7F7F3;
+    --bg-surface: #FFFFFF;
+    --bg-sidebar: #FFFFFF;
+    --bg-elevated: #FAFAF7;
+    --bg-hover: #F1F2EC;
+    --bg-subtle-green: #EAF1E9;
+    --bg-warm: #F5EDE5;
+
+    --text-primary: #252A26;
+    --text-secondary: #777E77;
+    --text-muted: #A0A69F;
+
+    --brand-primary: #526B58;
+    --brand-primary-hover: #445A49;
+    --brand-secondary: #718775;
+    --warm-accent: #C28B60;
+
+    --border-color: #E9EBE5;
+    --border-strong: #D9DDD4;
+
+    --status-success: #43845D;
+    --status-success-bg: #EAF1E9;
+    --status-warning: #C58C43;
+    --status-warning-bg: #F7EFE2;
+    --status-danger: #C75B55;
+    --status-danger-bg: #F9EBEA;
+    --status-info: #64748B;
+    --status-info-bg: #EEF1F4;
+
+    --shadow-xs: 0 1px 2px rgba(37, 42, 38, 0.04);
+    --shadow-sm: 0 1px 3px rgba(37, 42, 38, 0.06), 0 1px 2px rgba(37, 42, 38, 0.03);
+    --shadow-md: 0 8px 24px rgba(37, 42, 38, 0.08);
+    --shadow-lg: 0 18px 40px rgba(37, 42, 38, 0.12);
+  }
+
+  [data-theme="dark"] {
+    --bg-primary: #151715;
+    --bg-surface: #1D201D;
+    --bg-sidebar: #191C19;
+    --bg-elevated: #232723;
+    --bg-hover: #282C28;
+    --bg-subtle-green: #223025;
+    --bg-warm: #2D251E;
+
+    --text-primary: #F1F2ED;
+    --text-secondary: #A6ADA5;
+    --text-muted: #707770;
+
+    --brand-primary: #6D8B74;
+    --brand-primary-hover: #7B9B82;
+    --brand-secondary: #89A38E;
+    --warm-accent: #D29B70;
+
+    --border-color: #2C312C;
+    --border-strong: #3A403A;
+
+    --status-success: #5BAE7B;
+    --status-success-bg: #1E3225;
+    --status-warning: #DDA156;
+    --status-warning-bg: #33271A;
+    --status-danger: #E07A74;
+    --status-danger-bg: #36201F;
+    --status-info: #8EA0B5;
+    --status-info-bg: #232A33;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 20px 44px rgba(0, 0, 0, 0.45);
+  }
+
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+  }
+}
+
+.font-serif-editorial {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth subtle animations */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes drawerSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slowKenBurns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.animate-page-in {
+  animation: pageFadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-in {
+  animation: modalFadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-toast-in {
+  animation: toastSlideIn 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-drawer-in {
+  animation: drawerSlideLeft 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ken-burns {
+  animation: slowKenBurns 24s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-page-in,
+  .animate-modal-in,
+  .animate-toast-in,
+  .animate-drawer-in,
+  .animate-ken-burns {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
